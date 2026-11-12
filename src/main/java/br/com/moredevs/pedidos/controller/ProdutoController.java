@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/produtos")
 public class ProdutoController {
 
     private final ProdutoService service;
@@ -17,12 +16,12 @@ public class ProdutoController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping({"/api/v1/produtos", "/produtos"}) 
     public List<Produto> listarTodos() {
         return service.listarTodos();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping({"/api/v1/produtos/{id}", "/produtos/{id}"})  
     public Produto buscar(@PathVariable UUID id) {
         return service.buscar(id);
     }
